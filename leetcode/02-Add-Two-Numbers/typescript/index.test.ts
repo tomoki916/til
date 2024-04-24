@@ -20,3 +20,10 @@ test("test case 3", () => {
   const result = [8,9,9,9,0,0,0,1]
   expect(main(l1, l2)).toEqual(result)
 })
+
+test("test case 4", () => {
+  const l1 = [9,9,9]
+  const l2 = [1]
+  const result = [0, 0, 0, 1]
+  expect(main(l1, l2)).toEqual(result)
+})
