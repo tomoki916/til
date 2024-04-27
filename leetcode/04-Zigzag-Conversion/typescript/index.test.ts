@@ -20,3 +20,10 @@ test("test case 3", () => {
   const result = "A";
   expect(main(s, numRows)).toEqual(result);
 });
+
+test("test case 4", () => {
+  const s = "AB";
+  const numRows = 1;
+  const result = "AB";
+  expect(main(s, numRows)).toEqual(result);
+});

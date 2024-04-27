@@ -16,7 +16,10 @@ const tmp = (s: string, numRows: number): string => {
     rows[currentRow].push(sArray[i]);
     if (currentRow === 0) isReverse = false;
     if (currentRow === numRows - 1) isReverse = true;
-    currentRow += isReverse ? -1 : 1;
+
+    if (numRows > 1) {
+      currentRow += isReverse ? -1 : 1;
+    }
   }
 
   return rows.flat().join("");
