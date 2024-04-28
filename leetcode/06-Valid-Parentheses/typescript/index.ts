@@ -1,5 +1,5 @@
 export const main = (s: string): boolean => {
-  return first(s);
+  return second(s);
 };
 
 const first = (s: string): boolean => {
@@ -22,6 +22,25 @@ const first = (s: string): boolean => {
       } else {
         return false;
       }
+    }
+  }
+
+  return stack.length === 0;
+};
+
+const second = (s: string): boolean => {
+  const stack = new Array<string>();
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === "(" || s[i] === "{" || s[i] === "[") {
+      stack.push(s[i]);
+    } else if (s[i] === ")" && stack.at(-1) === "(") {
+      stack.pop();
+    } else if (s[i] === "}" && stack.at(-1) === "{") {
+      stack.pop();
+    } else if (s[i] === "]" && stack.at(-1) === "[") {
+      stack.pop();
+    } else {
+      return false;
     }
   }
 
