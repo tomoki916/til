@@ -7,6 +7,7 @@ const first = (s: string): number => {
 
   let result = 0;
   let isLeadingWhiteSpace = true;
+  let isLeadingSign = true;
   let isNegative = false;
 
   // 変換表
@@ -29,10 +30,16 @@ const first = (s: string): number => {
     if (isLeadingWhiteSpace) continue;
 
     // 正負の判定
-    if (sArray[i] === "-") {
+    if (sArray[i] === "-" && isLeadingSign) {
       isNegative = true;
+      isLeadingSign = false;
       continue;
     }
+    if (sArray[i] === "+" && isLeadingSign) {
+      isLeadingSign = false;
+      continue;
+    }
+    isLeadingSign = false;
 
     // 数値を読み込む
     const current = dijits.get(sArray[i]);
@@ -46,6 +53,7 @@ const first = (s: string): number => {
 
   // 正負の変換
   if (isNegative) result = -1 * result;
+  console.log(s, result);
 
   // 範囲の確認
   result = result < -(2 ** 31) ? -(2 ** 31) : result;

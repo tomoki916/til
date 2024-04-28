@@ -17,3 +17,21 @@ test("test case 3", () => {
   const result = 4193;
   expect(main(s)).toEqual(result);
 });
+
+test("test case 4", () => {
+  const s = "+1";
+  const result = 1;
+  expect(main(s)).toEqual(result);
+});
+
+test("test case 5", () => {
+  const s = "+-12";
+  const result = 0;
+  expect(main(s)).toEqual(result);
+});
+
+test("test case 6", () => {
+  const s = "00000-42a1234";
+  const result = 0;
+  expect(main(s)).toEqual(result);
+});
