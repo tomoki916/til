@@ -3,9 +3,27 @@ export const main = (s: string): boolean => {
 };
 
 const first = (s: string): boolean => {
-  const sArray = s.split("");
+  const pare = new Map<string, string>([
+    ["(", ")"],
+    ["{", "}"],
+    ["[", "]"],
+  ]);
+  const stack = new Array<string>();
 
-  let result = false;
+  for (let i = 0; i < s.length; i++) {
+    const tmp = s[i];
+    if (pare.has(tmp)) {
+      // かっこの左側の時
+      stack.push(tmp);
+    } else {
+      // かっこの右側の時
+      if (pare.get(stack[stack.length - 1]) === tmp) {
+        stack.pop();
+      } else {
+        return false;
+      }
+    }
+  }
 
-  return result;
+  return array.length === 0;
 };
