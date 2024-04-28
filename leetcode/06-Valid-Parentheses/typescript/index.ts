@@ -25,5 +25,5 @@ const first = (s: string): boolean => {
     }
   }
 
-  return array.length === 0;
+  return stack.length === 0;
 };
