@@ -1,4 +1,3 @@
-import numpy as np
 from main import Solution 
 
 def test__case1():
