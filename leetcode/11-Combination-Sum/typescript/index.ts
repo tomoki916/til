@@ -7,8 +7,9 @@ export function combinationSum(
   const backTrack = (candidates: number[], path: number[]): void => {
     const sum = path.reduce((acc, cur) => acc + cur, 0);
 
-    if (sum >= target) {
-      if (sum === target) answer.push([...path]);
+    if (sum > target) return;
+    if (sum === target) {
+      answer.push([...path]);
       return;
     }
 
