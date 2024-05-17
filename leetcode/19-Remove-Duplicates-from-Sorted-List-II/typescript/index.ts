@@ -37,7 +37,7 @@ export const convertListToListNode = (l: number[]): ListNode | null => {
   return new ListNode(head, convertListToListNode(rest));
 };
 
-export function deleteDuplicates(head: ListNode | null): ListNode | null {
+export function _deleteDuplicates(head: ListNode | null): ListNode | null {
   const resultValue: number[] = [];
 
   let currentNode = head;
@@ -59,4 +59,33 @@ export function deleteDuplicates(head: ListNode | null): ListNode | null {
   }
 
   return convertListToListNode(resultValue);
+}
+
+export function deleteDuplicates(head: ListNode | null): ListNode | null {
+  if (!head) return null;
+  if (!head.next) return head;
+
+  let fakeHead = new ListNode(undefined, head);
+  let prev = fakeHead; // グループの先頭
+  let current: ListNode | null = head;
+
+  while (current) {
+    while (current.next && current.val === current.next.val) {
+      // 新しい値が見つかるまでcurrentを動かす
+      current = current.next;
+    }
+
+    // インスタンスを比較する
+    if (prev.next === current) {
+      // prev.nextとcurrentが同じインスタンスの場合、上の処理でcurrenが動いていない。つまり重複がない。
+      prev = current;
+    } else {
+      // 重複があった場合、currentのnodeは無視する
+      prev.next = current.next;
+    }
+
+    current = current.next;
+  }
+
+  return fakeHead.next;
 }
