@@ -78,7 +78,7 @@ export function deleteDuplicates(head: ListNode | null): ListNode | null {
     // インスタンスを比較する
     if (prev.next === current) {
       // prev.nextとcurrentが同じインスタンスの場合、上の処理でcurrenが動いていない。つまり重複がない。
-      prev = current;
+      prev = current; // ノードを削除せずにprevの位置を動かす
     } else {
       // 重複があった場合、currentのnodeは無視する
       prev.next = current.next;
@@ -87,5 +87,5 @@ export function deleteDuplicates(head: ListNode | null): ListNode | null {
     current = current.next;
   }
 
-  return fakeHead.next;
+  return head;
 }
