@@ -5,8 +5,6 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         result = []
-        if len(nums) == 0:
-            return result
 
         def backtrace(path, candidates):
             if len(path) == len(nums):
