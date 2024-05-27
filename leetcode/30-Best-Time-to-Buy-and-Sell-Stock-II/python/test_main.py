@@ -32,3 +32,11 @@ def test__case4():
     result = 0
 
     assert solution.maxProfit(prices) == result
+
+
+def test__case5():
+    solution = Solution()
+    prices = [1, 2, 6, 4, 5]
+    result = 4
+
+    assert solution.maxProfit(prices) == result
