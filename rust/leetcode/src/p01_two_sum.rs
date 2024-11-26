@@ -1,24 +1,18 @@
 use std::collections::HashMap;
 
 fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
-  let mut answer = Vec::<i32>::new();
-  let mut cache = HashMap::<i32, i32>::new(); // numsの値をkey、インデックスをvalueとする
+  let mut cache = HashMap::<i32, usize>::new(); // numsの値をkey、インデックスをvalueとする
 
-  for (index, n) in nums.clone().iter().enumerate() {
-    let diff = target - n;
-
-    if let Some(value) = cache.get(n) {
-      println!("I found!");
-      answer.push(*value);
-      answer.push(index as i32);
-      break
+  for (index, &n) in nums.iter().enumerate() {
+    if let Some(&prev_index) = cache.get(&n) {
+      return vec![prev_index as i32, index as i32];
     } else {
-      println!("not hit cache...");
-      cache.insert(diff,  index as i32);
+      cache.insert(target - n,  index);
     }
    
   }
-  return answer
+
+  vec![]
 }
 
 pub fn solution() {
